@@ -1,11 +1,15 @@
 <form action="/dinosaurs" method="get" >
     <label for="nameFilter">Filter by Name:</label>
     <input id="nameFilter" type="text" name="nameFilter">
-    <input type="submit">
+    <button type="submit">Filter Results</button>
 </form>
 
 <ul> 
-    <% myDinos.forEach(dino =>{ %>
-        <li><%= dino.name %> is a <%= dino.type %></li>
+    <% myDinos.forEach((dino, index) =>{ %>
+        <li><%= dino.name %> is a <%= dino.type %>
+            <form method="post" action="/dinosaurs/<%= index %>/?_method=DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
     <% }) %>
 </ul>
